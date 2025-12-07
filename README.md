@@ -17,6 +17,7 @@ Sumário
   - Singleton
   - Prototype
   - Proxy
+  - Adapter
 - Próximos padrões (em breve)
 - Contato
 
@@ -47,6 +48,11 @@ Factory Method
 - Onde usar: quando uma classe não pode antecipar a classe exata dos objetos que precisa criar, ou quando você quer delegar a responsabilidade de criação para subclasses ou fábricas separadas.
 - Por que usar: centraliza a lógica de criação, melhora a extensibilidade (você pode adicionar novos tipos sem mudar consumidores) e suporta variações de criação dependendo do contexto.
 - Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/factorymethods/Produto.java`, as implementações `ProdutoDigital` e `ProdutoFisico`, e a fábrica em `src/main/java/com/ada/designpattern/factorymethods/solucao/ProdutoFactory.java`. Há um teste de exemplo em `src/main/java/com/ada/designpattern/factorymethods/problema/TesteProduto.java` e uma versão usando a factory em `src/main/java/com/ada/designpattern/factorymethods/solucao/TesteProdutoComFactoryMethod.java`.
+
+Adapter
+- Onde usar: quando você tem uma biblioteca, classe ou API existente cuja interface não combina com a do seu código cliente, e você quer reutilizar essa implementação sem modificá-la — o Adapter "alinha" a interface antiga com a nova.
+- Por que usar: permite integrar código legado ou bibliotecas de terceiros com mínima mudança no cliente, mantendo o princípio "open/closed" (não modificar código existente). Também é útil para adaptar diferenças sutis de contrato entre duas APIs.
+- Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/adapter/problema/` (implementação original / cliente que espera outra interface) e `src/main/java/com/ada/designpattern/adapter/solucao/` (o adapter que faz o mapeamento). Um exemplo concreto no projeto é o adapter para operações de conta corrente que adapta a API do jar externo para a interface esperada pelo cliente.
 
 Singleton
 - Onde usar: quando você precisa garantir que uma classe tenha apenas uma única instância em toda a aplicação e fornecer um ponto global de acesso a ela (ex: configurações, conexões de banco, logger, cache).
@@ -85,3 +91,4 @@ Contatos LinkedIn:
 - [Joanna Braccini](https://www.linkedin.com/in/joannabraccini)
 
 ---
+
