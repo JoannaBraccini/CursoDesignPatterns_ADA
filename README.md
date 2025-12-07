@@ -16,6 +16,7 @@ Sumário
   - Factory Method
   - Singleton
   - Prototype
+  - Proxy
 - Próximos padrões (em breve)
 - Contato
 
@@ -57,8 +58,13 @@ Prototype
 - Por que usar: reduz o custo de criação de objetos semelhantes, evita subclasses desnecessárias apenas para criar variações e permite criar objetos em tempo de execução sem conhecer suas classes concretas. Ideal para objetos com configurações pré-definidas.
 - Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/prototype/Botao.java` com o método `clone()`, o registro de protótipos em `src/main/java/com/ada/designpattern/prototype/solucao/BotaoRegistry.java` e a fábrica em `src/main/java/com/ada/designpattern/prototype/solucao/BotaoFactory.java`. Compare a abordagem com subclasses em `src/main/java/com/ada/designpattern/prototype/problema/` com a solução usando protótipos em `src/main/java/com/ada/designpattern/prototype/solucao/TesteBotaoPrototype.java`.
 
+Proxy
+- Onde usar: quando você precisa adicionar funcionalidades extras a um objeto (como logging, cache, controle de acesso, lazy loading) sem modificar o código original, ou quando deseja controlar o acesso a um objeto.
+- Por que usar: permite adicionar comportamentos adicionais de forma transparente, implementa cache para melhorar performance, adiciona logs e métricas sem poluir o código original e mantém o princípio Open/Closed (aberto para extensão, fechado para modificação).
+- Exemplo neste repositório: veja a interface `src/main/java/com/ada/designpattern/proxy/solucao/ProxyPessoa.java`, a implementação com cache e logging em `src/main/java/com/ada/designpattern/proxy/solucao/PessoaRepositoryProxy.java` que envolve `src/main/java/com/ada/designpattern/proxy/PessoaRepository.java`. O teste em `src/main/java/com/ada/designpattern/proxy/solucao/TestePessoaComProxy.java` demonstra como o cache reduz o tempo de execução na segunda chamada.
+
 Próximos padrões
-- Adapter, Proxy e outros ✨
+- Adapter e outros ✨
 
 Boas práticas e dicas rápidas
 - Prefira nomes claros para builders/fábricas (`PessoaBuilder`, `ProdutoFactory`).
