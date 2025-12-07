@@ -14,6 +14,8 @@ Sumário
 - Design Patterns incluídos
   - Builder
   - Factory Method
+  - Singleton
+  - Prototype
 - Próximos padrões (em breve)
 - Contato
 
@@ -45,8 +47,18 @@ Factory Method
 - Por que usar: centraliza a lógica de criação, melhora a extensibilidade (você pode adicionar novos tipos sem mudar consumidores) e suporta variações de criação dependendo do contexto.
 - Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/factorymethods/Produto.java`, as implementações `ProdutoDigital` e `ProdutoFisico`, e a fábrica em `src/main/java/com/ada/designpattern/factorymethods/solucao/ProdutoFactory.java`. Há um teste de exemplo em `src/main/java/com/ada/designpattern/factorymethods/problema/TesteProduto.java` e uma versão usando a factory em `src/main/java/com/ada/designpattern/factorymethods/solucao/TesteProdutoComFactoryMethod.java`.
 
+Singleton
+- Onde usar: quando você precisa garantir que uma classe tenha apenas uma única instância em toda a aplicação e fornecer um ponto global de acesso a ela (ex: configurações, conexões de banco, logger, cache).
+- Por que usar: controla o acesso a recursos compartilhados, economiza memória ao evitar múltiplas instâncias e garante consistência de estado. Útil para objetos que devem ser únicos por design.
+- Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/singleton/solucao/AgendaSingletonEAGER.java` (inicialização eager), `src/main/java/com/ada/designpattern/singleton/solucao/AgendaSingletonLAZY.java` (inicialização lazy) e `src/main/java/com/ada/designpattern/singleton/solucao/AgendaSingletonEnum.java` (usando enum, a forma mais segura). Há testes de exemplo em `src/main/java/com/ada/designpattern/singleton/problema/TesteAgenda.java` e `src/main/java/com/ada/designpattern/singleton/solucao/TesteAgendaComSingleton.java`.
+
+Prototype
+- Onde usar: quando você precisa criar novos objetos clonando instâncias existentes ao invés de instanciá-los do zero, especialmente quando a criação é custosa ou complexa.
+- Por que usar: reduz o custo de criação de objetos semelhantes, evita subclasses desnecessárias apenas para criar variações e permite criar objetos em tempo de execução sem conhecer suas classes concretas. Ideal para objetos com configurações pré-definidas.
+- Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/prototype/Botao.java` com o método `clone()`, o registro de protótipos em `src/main/java/com/ada/designpattern/prototype/solucao/BotaoRegistry.java` e a fábrica em `src/main/java/com/ada/designpattern/prototype/solucao/BotaoFactory.java`. Compare a abordagem com subclasses em `src/main/java/com/ada/designpattern/prototype/problema/` com a solução usando protótipos em `src/main/java/com/ada/designpattern/prototype/solucao/TesteBotaoPrototype.java`.
+
 Próximos padrões
-- Singleton, Prototype, Proxy e outros ✨
+- Adapter, Proxy e outros ✨
 
 Boas práticas e dicas rápidas
 - Prefira nomes claros para builders/fábricas (`PessoaBuilder`, `ProdutoFactory`).
