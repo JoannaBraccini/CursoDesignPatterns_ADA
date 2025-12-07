@@ -18,6 +18,7 @@ Sumário
   - Prototype
   - Proxy
   - Adapter
+  - Strategy
 - Próximos padrões (em breve)
 - Contato
 
@@ -69,6 +70,11 @@ Proxy
 - Por que usar: permite adicionar comportamentos adicionais de forma transparente, implementa cache para melhorar performance, adiciona logs e métricas sem poluir o código original e mantém o princípio Open/Closed (aberto para extensão, fechado para modificação).
 - Exemplo neste repositório: veja a interface `src/main/java/com/ada/designpattern/proxy/solucao/ProxyPessoa.java`, a implementação com cache e logging em `src/main/java/com/ada/designpattern/proxy/solucao/PessoaRepositoryProxy.java` que envolve `src/main/java/com/ada/designpattern/proxy/PessoaRepository.java`. O teste em `src/main/java/com/ada/designpattern/proxy/solucao/TestePessoaComProxy.java` demonstra como o cache reduz o tempo de execução na segunda chamada.
 
+Strategy
+- Onde usar: quando você tem um algoritmo ou comportamento que pode variar e precisa ser selecionado em tempo de execução, ou quando quer evitar uma longa cadeia de condicionais (if/else/switch) delegando a responsabilidade para classes que implementam a mesma interface.
+- Por que usar: permite encapsular diferentes algoritmos, deixar o código mais testável e aderente ao princípio Open/Closed (adicionar novas estratégias sem modificar o cliente). É ideal para regras de negócio que mudam com frequência ou para políticas configuráveis (ex.: cálculo de descontos, regras de ajuste de salário, estratégias de ordenação).
+- Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/strategy/` — objetos de domínio como `Funcionario` e `TipoContratacaoEnum`, o exemplo do problema `src/main/java/com/ada/designpattern/strategy/problema/ReajusteAnualSalario.java` e a solução em `src/main/java/com/ada/designpattern/strategy/solucao/ReajusteAnualSalarioComStrategy.java` com o teste em `src/main/java/com/ada/designpattern/strategy/solucao/TesteAjusteSalarioComStrategy.java`. As implementações concretas de estratégia (calculadores) estão no mesmo pacote `solucao` (ex.: `CalculadorReajusteAnualSalarioCLT`, `CalculadorReajusteAnualSalarioPJ`, etc.).
+
 Próximos padrões
 - Adapter e outros ✨
 
@@ -91,4 +97,3 @@ Contatos LinkedIn:
 - [Joanna Braccini](https://www.linkedin.com/in/joannabraccini)
 
 ---
-
