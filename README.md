@@ -19,6 +19,7 @@ Sumário
   - Proxy
   - Adapter
   - Strategy
+  - Chain of Responsibility
 - Próximos padrões (em breve)
 - Contato
 
@@ -75,8 +76,13 @@ Strategy
 - Por que usar: permite encapsular diferentes algoritmos, deixar o código mais testável e aderente ao princípio Open/Closed (adicionar novas estratégias sem modificar o cliente). É ideal para regras de negócio que mudam com frequência ou para políticas configuráveis (ex.: cálculo de descontos, regras de ajuste de salário, estratégias de ordenação).
 - Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/strategy/` — objetos de domínio como `Funcionario` e `TipoContratacaoEnum`, o exemplo do problema `src/main/java/com/ada/designpattern/strategy/problema/ReajusteAnualSalario.java` e a solução em `src/main/java/com/ada/designpattern/strategy/solucao/ReajusteAnualSalarioComStrategy.java` com o teste em `src/main/java/com/ada/designpattern/strategy/solucao/TesteAjusteSalarioComStrategy.java`. As implementações concretas de estratégia (calculadores) estão no mesmo pacote `solucao` (ex.: `CalculadorReajusteAnualSalarioCLT`, `CalculadorReajusteAnualSalarioPJ`, etc.).
 
+Chain of Responsibility (Cadeia de Responsabilidade)
+- Onde usar: quando você tem uma sequência de objetos (handlers) que podem tratar uma requisição e não quer acoplar o remetente ao receptor concreto — cada handler decide se processa a requisição ou a encaminha ao próximo da cadeia.
+- Por que usar: desacopla remetentes e receptores, facilita adicionar/ordenar handlers sem alterar o cliente e melhora a organização de regras quando várias unidades de responsabilidade podem tratar (ou delegar) a mesma solicitação (ex.: validações, cálculo de descontos, autorização).
+- Exemplo neste repositório: veja `src/main/java/com/ada/designpattern/chainofresponsibility/` — o exemplo do problema em `src/main/java/com/ada/designpattern/chainofresponsibility/problema/TesteVendaCarro.java` e a solução em `src/main/java/com/ada/designpattern/chainofresponsibility/solucao/` com classes como `VendaCarroServiceComChainOfResponsibility.java`, `DescontoCarro`, `DescontoCarroBMW.java`, `DescontoCarroAUDI.java`, `DescontoCarroValorMaiorQueCemMil.java` e `SemDireitoADesconto.java`. Há um teste de exemplo `src/main/java/com/ada/designpattern/chainofresponsibility/solucao/TesteVendaCarroComChainOfResponsibility.java` que demonstra a cadeia de descontos aplicando o primeiro handler que se encaixa ou delegando ao próximo.
+
 Próximos padrões
-- Adapter e outros ✨
+- Template Method ✨
 
 Boas práticas e dicas rápidas
 - Prefira nomes claros para builders/fábricas (`PessoaBuilder`, `ProdutoFactory`).
